@@ -1,6 +1,6 @@
-pragma solidity >=0.6.0;
+pragma solidity ^0.5.0;
 
-import "../installed_contracts/zeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/math/SafeMath.sol";
 
 contract Doubler {
 
@@ -14,21 +14,21 @@ contract Doubler {
 	}
 
 	User[] public users;
-	uint public currentPaying = 0;
+	uint public currentlyPaying = 0;
 	uint public totalUsers = 0;
 
 	constructor() public {
 		owner = msg.sender;
 	}
 
-	receive() external payable{
-		users[users.length] = User({addr: msg.sender, amount: msg.value});
+	function join() external payable{
+		users.push(User(msg.sender, msg.value));
 		totalUsers += 1;
 
 		owner.transfer(msg.value.div(10));
-		while (address(this).balance > users[currentlyPaying].amount * 2) {
-			paying += 1;
+		while (address(this).balance > users[currentlyPaying].amount.mul(2)) {
+			users[currentlyPaying].addr.transfer(users[currentlyPaying].amount.mul(2));
+			currentlyPaying += 1;
 		}
-
 	}
 }
