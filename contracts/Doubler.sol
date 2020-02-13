@@ -1,6 +1,10 @@
 pragma solidity >=0.6.0;
 
-contract SimpleStorage {
+import "../installed_contracts/zeppelin/contracts/math/SafeMath.sol";
+
+contract Doubler {
+
+	using SafeMath for uint;
 
 	address payable public owner;
 
@@ -17,8 +21,14 @@ contract SimpleStorage {
 		owner = msg.sender;
 	}
 
-	function() external payable{
+	receive() external payable{
 		users[users.length] = User({addr: msg.sender, amount: msg.value});
+		totalUsers += 1;
+
+		owner.transfer(msg.value.div(10));
+		while (address(this).balance > users[currentlyPaying].amount * 2) {
+			paying += 1;
+		}
 
 	}
 }
