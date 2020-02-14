@@ -22,7 +22,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="container py-5">
 				<Content />
 			</div>
 		)
