@@ -3,9 +3,22 @@ import Doubler from "../contracts/Doubler.json";
 
 import { web3Loaded, accountLoaded, doublerLoaded } from "./actions";
 
+export const loadBlockchainData = async (dispatch) => {
+    console.log("getting web3");
+    let web3 = await loadWeb3(dispatch);
+    console.log("getting account");
+    let account = await loadAccount(web3, dispatch);
+    console.log("getting doubler");
+    let doubler = await loadDoubler(web3, dispatch);
+    return web3;
+}
+
 export const loadWeb3 = async (dispatch) => {
+    console.log("1");
     const web3 = await getWeb3();
+    console.log("2");
     dispatch(web3Loaded(web3));
+    console.log("3");
     return web3;
 }
 
