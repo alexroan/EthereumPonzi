@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 import "./App.css";
-import { loadWeb3, loadAccount, loadDoubler } from "./redux/interactions.js";
 import Content from "./Content";
 
 class App extends Component {
