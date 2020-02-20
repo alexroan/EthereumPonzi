@@ -1,28 +1,29 @@
 import getWeb3 from "../getWeb3";
 import Doubler from "../contracts/Doubler.json";
 
-import { web3Loaded, accountLoaded, doublerLoaded } from "./actions";
+import { web3Loaded, accountLoaded, accountLoading, doublerLoaded } from "./actions";
 
 export const loadBlockchainData = async (dispatch) => {
-    console.log("getting web3");
     let web3 = await loadWeb3(dispatch);
-    console.log("getting account");
     await loadAccount(web3, dispatch);
-    console.log("getting doubler");
     await loadDoubler(web3, dispatch);
     return web3;
 }
 
 export const loadWeb3 = async (dispatch) => {
-    console.log("1");
     const web3 = await getWeb3();
-    console.log("2");
     dispatch(web3Loaded(web3));
-    console.log("3");
     return web3;
 }
 
+export const checkAccounts = async (web3, account, dispatch) => {
+    const web3Accounts = await web3.eth.getAccounts();
+    const web3Account = web3Accounts[0];
+    return (web3Account === account);
+}
+
 export const loadAccount = async (web3, dispatch) => {
+    dispatch(accountLoading());
     const accounts = await web3.eth.getAccounts();
     const account = accounts[0];
     dispatch(accountLoaded(account));
@@ -41,7 +42,6 @@ export const loadDoubler = async (web3, dispatch) => {
 }
 
 export const depositEther = async (web3, doubler, account, amount, dispatch) => {
-    console.log(web3, doubler, account, amount);
     const etherAmount = web3.utils.toWei(amount, 'ether');
     window.doubler = doubler;
     doubler.methods.join().send({from: account, value: etherAmount})
@@ -53,5 +53,6 @@ export const depositEther = async (web3, doubler, account, amount, dispatch) => 
         })
         .on('error', (err) => {
             console.log(err);
+            console.log()
         })
 }

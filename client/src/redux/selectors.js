@@ -10,5 +10,8 @@ export const doublerSelector = createSelector(doubler, d => d);
 const account = state => get(state, 'web3.account', null);
 export const accountSelector = createSelector(account, d => d);
 
+const accountLoading = state => get(state, 'web3.accountLoading', false);
+export const accountLoadingSelector = createSelector(accountLoading, a => a);
+
 const depositAmount = state => get(state, 'user.deposit', 0);
 export const depositAmountSelector = createSelector(depositAmount, d => d);

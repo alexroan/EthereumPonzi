@@ -5,6 +5,13 @@ export function web3Loaded(connection){
     }
 }
 
+export function accountLoading(account){
+    return {
+        type: 'ACCOUNT_LOADING',
+        account
+    }
+}
+
 export function accountLoaded(account){
     return {
         type: 'ACCOUNT_LOADED',

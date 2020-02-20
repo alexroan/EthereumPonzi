@@ -4,8 +4,10 @@ function web3(state = {}, action) {
     switch (action.type) {
         case 'WEB3_LOADED':
             return { ...state, connection: action.connection };
+        case 'ACCOUNT_LOADING':
+            return { ...state, accountLoading: true};
         case 'ACCOUNT_LOADED':
-            return { ...state, account: action.account };
+            return { ...state, account: action.account, accountLoading: false };
         case 'DOUBLER_LOADED':
             return { ...state, doubler: action.doubler};
         default:

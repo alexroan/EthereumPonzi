@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { etherAmountChanged } from './redux/actions';
-import { depositEther, loadBlockchainData } from './redux/interactions';
+import { depositEther, loadBlockchainData, checkAccounts } from './redux/interactions';
 import { web3Selector, doublerSelector, accountSelector, depositAmountSelector } from './redux/selectors';
 
 const showForm = (props) => {
     const {dispatch, web3, doubler, account, depositAmount} = props;
 
     const etherAmountChange = (e) => dispatch(etherAmountChanged(e.target.value));
-    const invest = (e) => {
+    const invest = async (e) => {
         e.preventDefault();
-        depositEther(web3, doubler, account, depositAmount, dispatch);
+        const accountsMatch = await checkAccounts(web3, account);
+        if (accountsMatch) {
+            await depositEther(web3, doubler, account, depositAmount, dispatch);
+        }
+        else{
+            alert("Your current account doesn't match up with your metamask account. Please reconnect by clicking your account button");
+        }
     }
 
     const connectWallet = async (e) => {
@@ -27,8 +33,8 @@ const showForm = (props) => {
                     <form onSubmit={connectWallet}>
                         <div className="form-group row">
                             <div className="col-12">
-                                <button type="submit" className="w-100 btn btn-secondary">
-                                    Connect Wallet
+                                <button type="submit" className="w-100 btn btn-secondary text-truncate">
+                                    {(account !== null) ? account : "Connect Wallet"}
                                 </button>
                             </div>
                         </div>
