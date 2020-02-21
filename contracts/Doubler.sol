@@ -2,6 +2,7 @@ pragma solidity ^0.5.0;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
+// Chain shaped ponzi
 contract Doubler {
 
 	using SafeMath for uint;
