@@ -4,7 +4,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 
 contract Tree {
 
-	using SafeMath for uint;
+    using SafeMath for uint;
 
     struct User {
         address payable inviter;
