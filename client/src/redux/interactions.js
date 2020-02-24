@@ -3,12 +3,11 @@ import Doubler from "../contracts/Doubler.json";
 
 import { web3Loaded, accountLoaded, accountLoading, doublerLoaded, totalUsersLoaded, totalWeiLoaded, totalPayoutLoaded, currentlyPayingLoaded} from "./actions";
 
-export const loadBlockchainData = async (dispatch) => {
-    let web3 = await loadWeb3(dispatch);
+export const loadBlockchainData = async (web3, dispatch) => {
     await loadAccount(web3, dispatch);
     let doubler = await loadDoubler(web3, dispatch);
     await loadDoublerData(doubler, dispatch);
-    return web3;
+    return loadAccount;
 }
 
 export const loadWeb3 = async (dispatch) => {
