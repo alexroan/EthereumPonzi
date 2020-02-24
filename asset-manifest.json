@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/EthereumPonzi/static/css/main.b100e6da.chunk.css",
+    "main.js": "/EthereumPonzi/static/js/main.edceb9b9.chunk.js",
+    "main.js.map": "/EthereumPonzi/static/js/main.edceb9b9.chunk.js.map",
+    "runtime-main.js": "/EthereumPonzi/static/js/runtime-main.947f76e4.js",
+    "runtime-main.js.map": "/EthereumPonzi/static/js/runtime-main.947f76e4.js.map",
+    "static/css/2.64a99b10.chunk.css": "/EthereumPonzi/static/css/2.64a99b10.chunk.css",
+    "static/js/2.7a3ed84f.chunk.js": "/EthereumPonzi/static/js/2.7a3ed84f.chunk.js",
+    "static/js/2.7a3ed84f.chunk.js.map": "/EthereumPonzi/static/js/2.7a3ed84f.chunk.js.map",
+    "index.html": "/EthereumPonzi/index.html",
+    "precache-manifest.30812a3bcb3541db3b7fbb782676d149.js": "/EthereumPonzi/precache-manifest.30812a3bcb3541db3b7fbb782676d149.js",
+    "service-worker.js": "/EthereumPonzi/service-worker.js",
+    "static/css/2.64a99b10.chunk.css.map": "/EthereumPonzi/static/css/2.64a99b10.chunk.css.map",
+    "static/css/main.b100e6da.chunk.css.map": "/EthereumPonzi/static/css/main.b100e6da.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.947f76e4.js",
+    "static/css/2.64a99b10.chunk.css",
+    "static/js/2.7a3ed84f.chunk.js",
+    "static/css/main.b100e6da.chunk.css",
+    "static/js/main.edceb9b9.chunk.js"
+  ]
+}
