@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/EthereumPonzi/static/css/main.b100e6da.chunk.css",
-    "main.js": "/EthereumPonzi/static/js/main.a3efe44d.chunk.js",
-    "main.js.map": "/EthereumPonzi/static/js/main.a3efe44d.chunk.js.map",
+    "main.js": "/EthereumPonzi/static/js/main.b0aa006e.chunk.js",
+    "main.js.map": "/EthereumPonzi/static/js/main.b0aa006e.chunk.js.map",
     "runtime-main.js": "/EthereumPonzi/static/js/runtime-main.947f76e4.js",
     "runtime-main.js.map": "/EthereumPonzi/static/js/runtime-main.947f76e4.js.map",
     "static/css/2.64a99b10.chunk.css": "/EthereumPonzi/static/css/2.64a99b10.chunk.css",
     "static/js/2.fcb8e4de.chunk.js": "/EthereumPonzi/static/js/2.fcb8e4de.chunk.js",
     "static/js/2.fcb8e4de.chunk.js.map": "/EthereumPonzi/static/js/2.fcb8e4de.chunk.js.map",
     "index.html": "/EthereumPonzi/index.html",
-    "precache-manifest.a134d6b48c4789b0f3c2e93b3b68534c.js": "/EthereumPonzi/precache-manifest.a134d6b48c4789b0f3c2e93b3b68534c.js",
+    "precache-manifest.c732ec3cd148ba18f6d7d23ba9fcb875.js": "/EthereumPonzi/precache-manifest.c732ec3cd148ba18f6d7d23ba9fcb875.js",
     "service-worker.js": "/EthereumPonzi/service-worker.js",
     "static/css/2.64a99b10.chunk.css.map": "/EthereumPonzi/static/css/2.64a99b10.chunk.css.map",
     "static/css/main.b100e6da.chunk.css.map": "/EthereumPonzi/static/css/main.b100e6da.chunk.css.map"
@@ -19,6 +19,6 @@
     "static/css/2.64a99b10.chunk.css",
     "static/js/2.fcb8e4de.chunk.js",
     "static/css/main.b100e6da.chunk.css",
-    "static/js/main.a3efe44d.chunk.js"
+    "static/js/main.b0aa006e.chunk.js"
   ]
 }

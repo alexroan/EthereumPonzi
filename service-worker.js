@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/EthereumPonzi/precache-manifest.a134d6b48c4789b0f3c2e93b3b68534c.js"
+  "/EthereumPonzi/precache-manifest.c732ec3cd148ba18f6d7d23ba9fcb875.js"
 );
 
 self.addEventListener('message', (event) => {
