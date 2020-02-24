@@ -15,6 +15,21 @@ function web3(state = {}, action) {
     }
 }
 
+function doubler(state = {}, action) {
+    switch (action.type) {
+        case 'TOTAL_USERS_LOADED':
+            return { ...state, totalUsers: action.totalUsers}
+        case 'TOTAL_WEI_LOADED':
+            return { ...state, totalWei: action.totalWei}
+        case 'TOTAL_PAYOUT_LOADED':
+            return { ...state, totalPayout: action.totalPayout}
+        case 'CURRENTLY_PAYING_LOADED':
+            return { ...state, currentlyPaying: action.currentlyPaying}
+        default:
+            return state;
+    }
+}
+
 function user(state = {}, action) {
     switch (action.type) {
         case 'ETHER_AMOUNT_CHANGED':
@@ -25,7 +40,7 @@ function user(state = {}, action) {
 }
 
 const rootReducer = new combineReducers({
-    web3, user
+    web3, user, doubler
 });
 
 export default rootReducer;

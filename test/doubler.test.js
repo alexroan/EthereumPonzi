@@ -16,6 +16,7 @@ contract("Doubler", accounts => {
       console.log(owner);
       console.log(ether(1).toString());
       await doublerInstance.join({from: account, value: ether(1)});
+      console.log(await doublerInstance.totalUsers());
     }
   });
 });

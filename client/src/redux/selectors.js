@@ -15,3 +15,9 @@ export const accountLoadingSelector = createSelector(accountLoading, a => a);
 
 const depositAmount = state => get(state, 'user.deposit', 0);
 export const depositAmountSelector = createSelector(depositAmount, d => d);
+
+const totalPayout = state => get(state, 'doubler.totalPayout', 0);
+export const totalPayoutSelector = createSelector(totalPayout, t => t);
+
+const currentlyPaying = state => get(state, 'doubler.currentlyPaying', 0);
+export const currentlyPayingSelector = createSelector(currentlyPaying, t => t);

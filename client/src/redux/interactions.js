@@ -1,12 +1,13 @@
 import getWeb3 from "../getWeb3";
 import Doubler from "../contracts/Doubler.json";
 
-import { web3Loaded, accountLoaded, accountLoading, doublerLoaded } from "./actions";
+import { web3Loaded, accountLoaded, accountLoading, doublerLoaded, totalUsersLoaded, totalWeiLoaded, totalPayoutLoaded, currentlyPayingLoaded} from "./actions";
 
 export const loadBlockchainData = async (dispatch) => {
     let web3 = await loadWeb3(dispatch);
     await loadAccount(web3, dispatch);
-    await loadDoubler(web3, dispatch);
+    let doubler = await loadDoubler(web3, dispatch);
+    await loadDoublerData(doubler, dispatch);
     return web3;
 }
 
@@ -30,6 +31,37 @@ export const loadAccount = async (web3, dispatch) => {
     return account;
 }
 
+export const loadDoublerData = async (doubler, dispatch) => {
+    await loadTotalUsers(doubler, dispatch);
+    await loadTotalWei(doubler, dispatch);
+    await loadTotalPayout(doubler, dispatch);
+    await loadCurrentlyPaying(doubler, dispatch);
+}
+
+export const loadTotalUsers = async (doubler, dispatch) => {
+    const totalUsers = await doubler.methods.totalUsers().call();
+    dispatch(totalUsersLoaded(totalUsers));
+    return totalUsers;
+}
+
+export const loadTotalWei = async (doubler, dispatch) => {
+    const totalWei = await doubler.methods.totalWei().call();
+    dispatch(totalWeiLoaded(totalWei));
+    return totalWei;
+}
+
+export const loadTotalPayout = async (doubler, dispatch) => {
+    const totalPayout = await doubler.methods.totalPayout().call();
+    dispatch(totalPayoutLoaded(totalPayout));
+    return totalPayout;
+}
+
+export const loadCurrentlyPaying = async (doubler, dispatch) => {
+    const currentlyPaying = await doubler.methods.currentlyPaying().call();
+    dispatch(currentlyPayingLoaded(currentlyPaying));
+    return currentlyPaying;
+}
+
 export const loadDoubler = async (web3, dispatch) => {
     const networkId = await web3.eth.net.getId();
     const deployedNetwork = Doubler.networks[networkId];
@@ -48,8 +80,9 @@ export const depositEther = async (web3, doubler, account, amount, dispatch) => 
         .on('transactionHash', (hash) => {
             console.log("HASH");
         })
-        .on('receipt', (hash) => {
+        .on('receipt', async (hash) => {
             console.log("receipt");
+            await loadDoublerData(doubler, dispatch);
         })
         .on('error', (err) => {
             console.log(err);

@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { etherAmountChanged } from './redux/actions';
 import { depositEther, loadBlockchainData, checkAccounts } from './redux/interactions';
-import { web3Selector, doublerSelector, accountSelector, depositAmountSelector } from './redux/selectors';
+import { web3Selector, doublerSelector, accountSelector, depositAmountSelector, totalPayoutSelector, currentlyPayingSelector } from './redux/selectors';
 
 const showForm = (props) => {
-    const {dispatch, web3, doubler, account, depositAmount} = props;
+    const {dispatch, web3, doubler, account, depositAmount, totalPayout, usersPaid} = props;
 
     const etherAmountChange = (e) => dispatch(etherAmountChanged(e.target.value));
     const invest = async (e) => {
@@ -93,7 +93,9 @@ function mapStateToProps(state){
         web3: web3Selector(state),
         doubler: doublerSelector(state),
         account: accountSelector(state),
-        depositAmount: depositAmountSelector(state)
+        depositAmount: depositAmountSelector(state),
+        totalPayout: totalPayoutSelector(state),
+        usersPaid: currentlyPayingSelector(state)
 	}
 }
 
