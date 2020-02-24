@@ -10,13 +10,16 @@ contract("Doubler", accounts => {
   it("doubles!", async () => {
     const doublerInstance = await Doubler.deployed();
 
-    for (let i = 1; i < 10; i++) {
+    let owner = await doublerInstance.owner();
+    for (let i = 1; i < 9; i++) {
       const account = accounts[i];
-      let owner = await doublerInstance.owner();
-      console.log(owner);
-      console.log(ether(1).toString());
       await doublerInstance.join({from: account, value: ether(1)});
-      console.log(await doublerInstance.totalUsers());
     }
+
+    console.log(await web3.eth.getBalance(accounts[0]));
+    await doublerInstance.close({from: accounts[0]});
+    console.log(await web3.eth.getBalance(accounts[0]));
+
+
   });
 });
