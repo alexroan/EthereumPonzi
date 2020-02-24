@@ -20,16 +20,12 @@ const showForm = (props) => {
 
     const connectBlockchain = async (e) => {
         e.preventDefault();
-        console.log("Connecting wallet");
         await loadWeb3(dispatch);
-        console.log("Connected");
     }
 
     const connectWallet = async (e) => {
         e.preventDefault();
-        console.log("Connecting wallet");
         await loadBlockchainData(web3, dispatch);
-        console.log("Connected");
     }
 
     return (

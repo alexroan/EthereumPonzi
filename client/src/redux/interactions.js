@@ -7,7 +7,7 @@ export const loadBlockchainData = async (web3, dispatch) => {
     await loadAccount(web3, dispatch);
     let doubler = await loadDoubler(web3, dispatch);
     await loadDoublerData(doubler, dispatch);
-    return loadAccount;
+    return doubler;
 }
 
 export const loadWeb3 = async (dispatch) => {
