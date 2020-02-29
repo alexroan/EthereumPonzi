@@ -4,6 +4,7 @@ require("dotenv").config();
 const path = require("path");
 const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
 const privateKey = process.env.PRIVATE_KEY || "";
+const mainnetPrivateKey = process.env.MAINNET_PRIVATE_KEY || "";
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -27,6 +28,19 @@ module.exports = {
       gas: 5000000,
       gasPrice: 25000000000,
       network_id: 42
+    },
+    mainnet: {
+      provider: function() {
+        return new HDWalletProvider(
+          //private keys array
+          [mainnetPrivateKey],
+          //url to ethereum node
+          `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`
+        )
+      },
+      gas: 2000000,
+      gasPrice: 3000000000,
+      network_id: 1
     }
   },
   compilers: {
