@@ -1,3 +1,10 @@
+export function appSelected(name){
+    return {
+        type: 'APP_SELECTED',
+        name
+    }
+}
+
 export function web3Loaded(connection){
     return {
         type: 'WEB3_LOADED',

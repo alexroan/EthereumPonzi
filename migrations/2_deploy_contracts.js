@@ -9,5 +9,4 @@ module.exports = function(deployer) {
   deployer.deploy(Tree);
   deployer.deploy(Waterfall);
   deployer.deploy(Handover);
-
 };

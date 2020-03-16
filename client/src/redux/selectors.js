@@ -21,3 +21,6 @@ export const totalPayoutSelector = createSelector(totalPayout, t => t);
 
 const currentlyPaying = state => get(state, 'doubler.currentlyPaying', 0);
 export const currentlyPayingSelector = createSelector(currentlyPaying, t => t);
+
+const selectedAppName = state => get(state, 'app.name', "Doubler");
+export const selectedAppNameSelector = createSelector(selectedAppName, s => s);

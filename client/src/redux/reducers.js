@@ -1,5 +1,14 @@
 import {combineReducers} from 'redux';
 
+function app(state ={}, action) {
+    switch (action.type) {
+        case 'APP_SELECTED':
+            return { ...state, name: action.name };
+        default:
+            return state;
+    }
+}
+
 function web3(state = {}, action) {
     switch (action.type) {
         case 'WEB3_LOADED':
@@ -40,7 +49,7 @@ function user(state = {}, action) {
 }
 
 const rootReducer = new combineReducers({
-    web3, user, doubler
+    app, web3, user, doubler
 });
 
 export default rootReducer;
