@@ -54,6 +54,13 @@ export function currentlyPayingLoaded(currentlyPaying){
     }
 }
 
+export function handoverLoaded(handover){
+    return {
+        type: 'HANDOVER_LOADED',
+        handover
+    }
+}
+
 export function doublerLoaded(doubler){
     return {
         type: 'DOUBLER_LOADED',

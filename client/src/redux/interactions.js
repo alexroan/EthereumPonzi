@@ -1,7 +1,8 @@
 import getWeb3 from "../getWeb3";
 import Doubler from "../contracts/Doubler.json";
+import Handover from "../contracts/Handover.json";
 
-import { appSelected, web3Loaded, accountLoaded, accountLoading, doublerLoaded, totalUsersLoaded, totalWeiLoaded, totalPayoutLoaded, currentlyPayingLoaded} from "./actions";
+import { appSelected, web3Loaded, accountLoaded, accountLoading, doublerLoaded, handoverLoaded, totalUsersLoaded, totalWeiLoaded, totalPayoutLoaded, currentlyPayingLoaded} from "./actions";
 
 export const setAppName = (name, dispatch) => {
     dispatch(appSelected(name));
@@ -11,7 +12,8 @@ export const setAppName = (name, dispatch) => {
 export const loadBlockchainData = async (web3, dispatch) => {
     await loadAccount(web3, dispatch);
     let doubler = await loadDoubler(web3, dispatch);
-    await loadDoublerData(doubler, dispatch);
+    // await loadDoublerData(doubler, dispatch);
+    await loadHandover(web3, dispatch);
     return doubler;
 }
 
@@ -64,6 +66,17 @@ export const loadCurrentlyPaying = async (doubler, dispatch) => {
     const currentlyPaying = await doubler.methods.currentlyPaying().call();
     dispatch(currentlyPayingLoaded(currentlyPaying));
     return currentlyPaying;
+}
+
+export const loadHandover = async (web3, dispatch) => {
+    const networkId = await web3.eth.net.getId();
+    const deployedNetwork = Handover.networks[networkId];
+    const instance = new web3.eth.Contract(
+        Handover.abi,
+        deployedNetwork && deployedNetwork.address,
+    );
+    dispatch(handoverLoaded(instance));
+    return instance;
 }
 
 export const loadDoubler = async (web3, dispatch) => {

@@ -19,6 +19,8 @@ function web3(state = {}, action) {
             return { ...state, account: action.account, accountLoading: false };
         case 'DOUBLER_LOADED':
             return { ...state, doubler: action.doubler};
+        case 'HANDOVER_LOADED':
+            return { ...state, handover: action.handover};
         default:
             return state;
     }
